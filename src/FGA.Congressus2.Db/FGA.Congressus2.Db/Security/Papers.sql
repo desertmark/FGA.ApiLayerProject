@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Papers]
+    AUTHORIZATION [dbo];
+

@@ -1,0 +1,1455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Congressus2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Archivos">
+          <Key>
+            <PropertyRef Name="ArchivoId" />
+          </Key>
+          <Property Name="ArchivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar(max)" />
+          <Property Name="ContentType" Type="nvarchar(max)" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Bytes" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="PaisId" />
+          </Key>
+          <Property Name="PaisId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nacionalidad" Type="nvarchar(max)" />
+          <Property Name="Pais" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PersonaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DNI" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="150" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" />
+          <Property Name="NacionalidadId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="AreasCientificas">
+          <Key>
+            <PropertyRef Name="AreaCientificaId" />
+          </Key>
+          <Property Name="AreaCientificaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="OrganizadorId" Type="nvarchar" MaxLength="128" />
+          <Property Name="EventoId" Type="int" />
+        </EntityType>
+        <EntityType Name="Conferencia">
+          <Key>
+            <PropertyRef Name="ConferenciaId" />
+          </Key>
+          <Property Name="ConferenciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titulo" Type="nvarchar(max)" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Tipo" Type="nvarchar(max)" />
+          <Property Name="Cupo" Type="int" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="Lugar" Type="nvarchar(max)" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="PaperId" Type="int" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="FechaFinTrabajos" Type="datetime" Nullable="false" />
+          <Property Name="FechaFinInscripcion" Type="datetime" Nullable="false" />
+          <Property Name="FechaFinInscripcionTemprana" Type="datetime" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+          <Property Name="Lugar" Type="nvarchar(max)" />
+          <Property Name="Tema" Type="nvarchar(max)" />
+          <Property Name="EmailContacto" Type="nvarchar(max)" />
+          <Property Name="Direccion" Type="nvarchar(max)" />
+          <Property Name="HabilitarDescargaCertificados" Type="bit" Nullable="false" />
+          <Property Name="LogoId" Type="int" />
+          <Property Name="TextoBienvenida" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Organizadores">
+          <Key>
+            <PropertyRef Name="EventoId" />
+            <PropertyRef Name="PerfilId" />
+          </Key>
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="PerfilId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SeccionesEvento">
+          <Key>
+            <PropertyRef Name="SeccionEventoId" />
+          </Key>
+          <Property Name="SeccionEventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Titulo" Type="nvarchar(max)" />
+          <Property Name="Cuerpo" Type="nvarchar(max)" />
+          <Property Name="EventoId" Type="int" />
+        </EntityType>
+        <EntityType Name="FormularioBecas">
+          <Key>
+            <PropertyRef Name="FormularioBecaId" />
+          </Key>
+          <Property Name="FormularioBecaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="NombreCompleto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Domicilio" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CodigoPostal" Type="int" Nullable="false" />
+          <Property Name="Localidad" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Provincia" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Pais" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PresentaTrabajo" Type="bit" Nullable="false" />
+          <Property Name="AreaCientificaId" Type="int" />
+          <Property Name="CategoriaId" Type="int" Nullable="false" />
+          <Property Name="Universidad" Type="nvarchar(max)" />
+          <Property Name="Carrera" Type="nvarchar(max)" />
+          <Property Name="PorcentajeCarrera" Type="int" Nullable="false" />
+          <Property Name="PromedioParcial" Type="float" Nullable="false" />
+          <Property Name="TituloGrado" Type="nvarchar(max)" />
+          <Property Name="AñoGrado" Type="int" Nullable="false" />
+          <Property Name="TituloPosgrado" Type="nvarchar(max)" />
+          <Property Name="AñoPosgrado" Type="int" Nullable="false" />
+          <Property Name="PorcentajePosgrado" Type="int" Nullable="false" />
+          <Property Name="DirectorPosgrado" Type="nvarchar(max)" />
+          <Property Name="LugarTrabajoPosgrado" Type="nvarchar(max)" />
+          <Property Name="PosicionActual" Type="nvarchar(max)" />
+          <Property Name="Puesto" Type="nvarchar(max)" />
+          <Property Name="AsistenteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InscripcionConferencia">
+          <Key>
+            <PropertyRef Name="InscripcionConferenciaId" />
+          </Key>
+          <Property Name="InscripcionConferenciaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConferenciaId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InscripcionEventos">
+          <Key>
+            <PropertyRef Name="InscripcionEventoId" />
+          </Key>
+          <Property Name="InscripcionEventoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInscripcion" Type="datetime" Nullable="false" />
+          <Property Name="FechaPago" Type="datetime" />
+          <Property Name="Pago" Type="bit" Nullable="false" />
+          <Property Name="MontoPago" Type="float" />
+          <Property Name="EventoId" Type="int" />
+          <Property Name="PerfilId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evaluaciones">
+          <Key>
+            <PropertyRef Name="EvaluacionId" />
+          </Key>
+          <Property Name="EvaluacionId" Type="int" Nullable="false" />
+          <Property Name="Calificacion" Type="int" Nullable="false" />
+          <Property Name="PerfilId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PaperId" Type="int" Nullable="false" />
+          <Property Name="Comentario" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar(max)" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+          <Property Name="Estado" Type="nvarchar(max)" />
+          <Property Name="AreaCientificaId" Type="int" />
+          <Property Name="EvaluadorId" Type="int" />
+          <Property Name="EventoId" Type="int" />
+          <Property Name="ArchivoId" Type="int" />
+        </EntityType>
+        <EntityType Name="PaperAutores">
+          <Key>
+            <PropertyRef Name="PaperId" />
+            <PropertyRef Name="PerfilId" />
+          </Key>
+          <Property Name="PaperId" Type="int" Nullable="false" />
+          <Property Name="PerfilId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Revisiones">
+          <Key>
+            <PropertyRef Name="RevisionId" />
+          </Key>
+          <Property Name="RevisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar(max)" />
+          <Property Name="Comentario" Type="nvarchar(max)" />
+          <Property Name="ArchivoId" Type="int" />
+          <Property Name="PaperId" Type="int" />
+        </EntityType>
+        <Association Name="FK_AreasCientificas_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="0..1" />
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AreasCientificas">
+              <PropertyRef Name="OrganizadorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="AreasCientificas">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Charlas_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
+          <End Role="Conferencia" Type="Self.Conferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Conferencia">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Charlas_dbo_Paper_paper_Id">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+          <End Role="Conferencia" Type="Self.Conferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Conferencia">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId">
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormularioBecas" Type="Self.FormularioBecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreasCientificas">
+              <PropertyRef Name="AreaCientificaId" />
+            </Principal>
+            <Dependent Role="FormularioBecas">
+              <PropertyRef Name="AreaCientificaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FormularioBecas_dbo_Eventos_EventoId">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormularioBecas" Type="Self.FormularioBecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="FormularioBecas">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="InscripcionEventos" Type="Self.InscripcionEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="InscripcionEventos">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Paper_dbo_Archivos_Documento_Id">
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="0..1" />
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivos">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="ArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id">
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="0..1" />
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreasCientificas">
+              <PropertyRef Name="AreaCientificaId" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="AreaCientificaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Paper_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Revisiones_dbo_Paper_Paper_Id">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+          <End Role="Revisiones" Type="Self.Revisiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Revisiones">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="SeccionesEvento" Type="Self.SeccionesEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="SeccionesEvento">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluaciones_Paper">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="1" />
+          <End Role="Evaluaciones" Type="Self.Evaluaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Evaluaciones">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluaciones_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Evaluaciones" Type="Self.Evaluaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Evaluaciones">
+              <PropertyRef Name="PerfilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_Archivos1">
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="0..1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivos">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="LogoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionConferencia_Conferencia">
+          <End Role="Conferencia" Type="Self.Conferencia" Multiplicity="1" />
+          <End Role="InscripcionConferencia" Type="Self.InscripcionConferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferencia">
+              <PropertyRef Name="ConferenciaId" />
+            </Principal>
+            <Dependent Role="InscripcionConferencia">
+              <PropertyRef Name="ConferenciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionEventos_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="InscripcionEventos" Type="Self.InscripcionEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="InscripcionEventos">
+              <PropertyRef Name="PerfilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organizadores_Eventos">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
+          <End Role="Organizadores" Type="Self.Organizadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Organizadores">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organizadores_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Organizadores" Type="Self.Organizadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Organizadores">
+              <PropertyRef Name="PerfilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaperAutores_Paper">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="1" />
+          <End Role="PaperAutores" Type="Self.PaperAutores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="PaperAutores">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PaperAutores_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="PaperAutores" Type="Self.PaperAutores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PaperAutores">
+              <PropertyRef Name="PerfilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfil_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Perfil">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="PaisId" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="NacionalidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revisiones_Archivos">
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="0..1" />
+          <End Role="Revisiones" Type="Self.Revisiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivos">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="Revisiones">
+              <PropertyRef Name="ArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Congressus2ModelStoreContainer">
+          <EntitySet Name="Archivos" EntityType="Self.Archivos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AreasCientificas" EntityType="Self.AreasCientificas" Schema="Eventos" store:Type="Tables" />
+          <EntitySet Name="Conferencia" EntityType="Self.Conferencia" Schema="Eventos" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="Eventos" store:Type="Tables" />
+          <EntitySet Name="Organizadores" EntityType="Self.Organizadores" Schema="Eventos" store:Type="Tables" />
+          <EntitySet Name="SeccionesEvento" EntityType="Self.SeccionesEvento" Schema="Eventos" store:Type="Tables" />
+          <EntitySet Name="FormularioBecas" EntityType="Self.FormularioBecas" Schema="Inscripciones" store:Type="Tables" />
+          <EntitySet Name="InscripcionConferencia" EntityType="Self.InscripcionConferencia" Schema="Inscripciones" store:Type="Tables" />
+          <EntitySet Name="InscripcionEventos" EntityType="Self.InscripcionEventos" Schema="Inscripciones" store:Type="Tables" />
+          <EntitySet Name="Evaluaciones" EntityType="Self.Evaluaciones" Schema="Papers" store:Type="Tables" />
+          <EntitySet Name="Paper" EntityType="Self.Paper" Schema="Papers" store:Type="Tables" />
+          <EntitySet Name="PaperAutores" EntityType="Self.PaperAutores" Schema="Papers" store:Type="Tables" />
+          <EntitySet Name="Revisiones" EntityType="Self.Revisiones" Schema="Papers" store:Type="Tables" />
+          <AssociationSet Name="FK_AreasCientificas_Perfil" Association="Self.FK_AreasCientificas_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Charlas_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_Charlas_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Conferencia" EntitySet="Conferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Charlas_dbo_Paper_paper_Id" Association="Self.FK_dbo_Charlas_dbo_Paper_paper_Id">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Conferencia" EntitySet="Conferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId" Association="Self.FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId">
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+            <End Role="FormularioBecas" EntitySet="FormularioBecas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FormularioBecas_dbo_Eventos_EventoId" Association="Self.FK_dbo_FormularioBecas_dbo_Eventos_EventoId">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="FormularioBecas" EntitySet="FormularioBecas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="InscripcionEventos" EntitySet="InscripcionEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Paper_dbo_Archivos_Documento_Id" Association="Self.FK_dbo_Paper_dbo_Archivos_Documento_Id">
+            <End Role="Archivos" EntitySet="Archivos" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id" Association="Self.FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id">
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Paper_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_Paper_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Revisiones_dbo_Paper_Paper_Id" Association="Self.FK_dbo_Revisiones_dbo_Paper_Paper_Id">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Revisiones" EntitySet="Revisiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="SeccionesEvento" EntitySet="SeccionesEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluaciones_Paper" Association="Self.FK_Evaluaciones_Paper">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Evaluaciones" EntitySet="Evaluaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluaciones_Perfil" Association="Self.FK_Evaluaciones_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Evaluaciones" EntitySet="Evaluaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_Archivos1" Association="Self.FK_Eventos_Archivos1">
+            <End Role="Archivos" EntitySet="Archivos" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionConferencia_Conferencia" Association="Self.FK_InscripcionConferencia_Conferencia">
+            <End Role="Conferencia" EntitySet="Conferencia" />
+            <End Role="InscripcionConferencia" EntitySet="InscripcionConferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionEventos_Perfil" Association="Self.FK_InscripcionEventos_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="InscripcionEventos" EntitySet="InscripcionEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organizadores_Eventos" Association="Self.FK_Organizadores_Eventos">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Organizadores" EntitySet="Organizadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organizadores_Perfil" Association="Self.FK_Organizadores_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Organizadores" EntitySet="Organizadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaperAutores_Paper" Association="Self.FK_PaperAutores_Paper">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="PaperAutores" EntitySet="PaperAutores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PaperAutores_Perfil" Association="Self.FK_PaperAutores_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="PaperAutores" EntitySet="PaperAutores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfil_Persona" Association="Self.FK_Perfil_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_Paises" Association="Self.FK_Persona_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revisiones_Archivos" Association="Self.FK_Revisiones_Archivos">
+            <End Role="Archivos" EntitySet="Archivos" />
+            <End Role="Revisiones" EntitySet="Revisiones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Congressus2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Archivos">
+          <Key>
+            <PropertyRef Name="ArchivoId" />
+          </Key>
+          <Property Name="ArchivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK_dbo_Paper_dbo_Archivos_Documento_Id" FromRole="Archivos" ToRole="Paper" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_Eventos_Archivos1" FromRole="Archivos" ToRole="Eventos" />
+          <NavigationProperty Name="Revisiones" Relationship="Self.FK_Revisiones_Archivos" FromRole="Archivos" ToRole="Revisiones" />
+        </EntityType>
+        <EntityType Name="Paises">
+          <Key>
+            <PropertyRef Name="PaisId" />
+          </Key>
+          <Property Name="PaisId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nacionalidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_Paises" FromRole="Paises" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Perfil">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AreasCientificas" Relationship="Self.FK_AreasCientificas_Perfil" FromRole="Perfil" ToRole="AreasCientificas" />
+          <NavigationProperty Name="Evaluaciones" Relationship="Self.FK_Evaluaciones_Perfil" FromRole="Perfil" ToRole="Evaluaciones" />
+          <NavigationProperty Name="InscripcionEventos" Relationship="Self.FK_InscripcionEventos_Perfil" FromRole="Perfil" ToRole="InscripcionEventos" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Perfil_Persona" FromRole="Perfil" ToRole="Persona" />
+          <NavigationProperty Name="Eventos" Relationship="Self.Organizadores" FromRole="Perfil" ToRole="Eventos" />
+          <NavigationProperty Name="Paper" Relationship="Self.PaperAutores" FromRole="Perfil" ToRole="Paper" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DNI" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="NacionalidadId" Type="Int32" />
+          <NavigationProperty Name="Paises" Relationship="Self.FK_Persona_Paises" FromRole="Persona" ToRole="Paises" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK_Perfil_Persona" FromRole="Persona" ToRole="Perfil" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AreasCientificas">
+          <Key>
+            <PropertyRef Name="AreaCientificaId" />
+          </Key>
+          <Property Name="AreaCientificaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizadorId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="EventoId" Type="Int32" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK_AreasCientificas_Perfil" FromRole="AreasCientificas" ToRole="Perfil" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id" FromRole="AreasCientificas" ToRole="Eventos" />
+          <NavigationProperty Name="FormularioBecas" Relationship="Self.FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId" FromRole="AreasCientificas" ToRole="FormularioBecas" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id" FromRole="AreasCientificas" ToRole="Paper" />
+        </EntityType>
+        <EntityType Name="Conferencia">
+          <Key>
+            <PropertyRef Name="ConferenciaId" />
+          </Key>
+          <Property Name="ConferenciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cupo" Type="Int32" Nullable="false" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="Lugar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <Property Name="PaperId" Type="Int32" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_dbo_Charlas_dbo_Eventos_Evento_Id" FromRole="Conferencia" ToRole="Eventos" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK_dbo_Charlas_dbo_Paper_paper_Id" FromRole="Conferencia" ToRole="Paper" />
+          <NavigationProperty Name="InscripcionConferencia" Relationship="Self.FK_InscripcionConferencia_Conferencia" FromRole="Conferencia" ToRole="InscripcionConferencia" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="EventoId" />
+          </Key>
+          <Property Name="EventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FechaFinTrabajos" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFinInscripcion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFinInscripcionTemprana" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Lugar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailContacto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HabilitarDescargaCertificados" Type="Boolean" Nullable="false" />
+          <Property Name="LogoId" Type="Int32" />
+          <Property Name="TextoBienvenida" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archivos" Relationship="Self.FK_Eventos_Archivos1" FromRole="Eventos" ToRole="Archivos" />
+          <NavigationProperty Name="AreasCientificas" Relationship="Self.FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id" FromRole="Eventos" ToRole="AreasCientificas" />
+          <NavigationProperty Name="Conferencia" Relationship="Self.FK_dbo_Charlas_dbo_Eventos_Evento_Id" FromRole="Eventos" ToRole="Conferencia" />
+          <NavigationProperty Name="FormularioBecas" Relationship="Self.FK_dbo_FormularioBecas_dbo_Eventos_EventoId" FromRole="Eventos" ToRole="FormularioBecas" />
+          <NavigationProperty Name="InscripcionEventos" Relationship="Self.FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id" FromRole="Eventos" ToRole="InscripcionEventos" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK_dbo_Paper_dbo_Eventos_Evento_Id" FromRole="Eventos" ToRole="Paper" />
+          <NavigationProperty Name="SeccionesEvento" Relationship="Self.FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id" FromRole="Eventos" ToRole="SeccionesEvento" />
+          <NavigationProperty Name="Perfil" Relationship="Self.Organizadores" FromRole="Eventos" ToRole="Perfil" />
+        </EntityType>
+        <EntityType Name="SeccionesEvento">
+          <Key>
+            <PropertyRef Name="SeccionEventoId" />
+          </Key>
+          <Property Name="SeccionEventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Titulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventoId" Type="Int32" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id" FromRole="SeccionesEvento" ToRole="Eventos" />
+        </EntityType>
+        <EntityType Name="FormularioBecas">
+          <Key>
+            <PropertyRef Name="FormularioBecaId" />
+          </Key>
+          <Property Name="FormularioBecaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <Property Name="NombreCompleto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domicilio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodigoPostal" Type="Int32" Nullable="false" />
+          <Property Name="Localidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Provincia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pais" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PresentaTrabajo" Type="Boolean" Nullable="false" />
+          <Property Name="AreaCientificaId" Type="Int32" />
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+          <Property Name="Universidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Carrera" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PorcentajeCarrera" Type="Int32" Nullable="false" />
+          <Property Name="PromedioParcial" Type="Double" Nullable="false" />
+          <Property Name="TituloGrado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AñoGrado" Type="Int32" Nullable="false" />
+          <Property Name="TituloPosgrado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AñoPosgrado" Type="Int32" Nullable="false" />
+          <Property Name="PorcentajePosgrado" Type="Int32" Nullable="false" />
+          <Property Name="DirectorPosgrado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LugarTrabajoPosgrado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PosicionActual" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Puesto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AsistenteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AreasCientificas" Relationship="Self.FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId" FromRole="FormularioBecas" ToRole="AreasCientificas" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_dbo_FormularioBecas_dbo_Eventos_EventoId" FromRole="FormularioBecas" ToRole="Eventos" />
+        </EntityType>
+        <EntityType Name="InscripcionConferencia">
+          <Key>
+            <PropertyRef Name="InscripcionConferenciaId" />
+          </Key>
+          <Property Name="InscripcionConferenciaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConferenciaId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Conferencia" Relationship="Self.FK_InscripcionConferencia_Conferencia" FromRole="InscripcionConferencia" ToRole="Conferencia" />
+        </EntityType>
+        <EntityType Name="InscripcionEventos">
+          <Key>
+            <PropertyRef Name="InscripcionEventoId" />
+          </Key>
+          <Property Name="InscripcionEventoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInscripcion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="Pago" Type="Boolean" Nullable="false" />
+          <Property Name="MontoPago" Type="Double" />
+          <Property Name="EventoId" Type="Int32" />
+          <Property Name="PerfilId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK_InscripcionEventos_Perfil" FromRole="InscripcionEventos" ToRole="Perfil" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id" FromRole="InscripcionEventos" ToRole="Eventos" />
+        </EntityType>
+        <EntityType Name="Evaluaciones">
+          <Key>
+            <PropertyRef Name="EvaluacionId" />
+          </Key>
+          <Property Name="EvaluacionId" Type="Int32" Nullable="false" />
+          <Property Name="Calificacion" Type="Int32" Nullable="false" />
+          <Property Name="PerfilId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaperId" Type="Int32" Nullable="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Perfil" Relationship="Self.FK_Evaluaciones_Perfil" FromRole="Evaluaciones" ToRole="Perfil" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK_Evaluaciones_Paper" FromRole="Evaluaciones" ToRole="Paper" />
+        </EntityType>
+        <EntityType Name="Paper">
+          <Key>
+            <PropertyRef Name="PaperId" />
+          </Key>
+          <Property Name="PaperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AreaCientificaId" Type="Int32" />
+          <Property Name="EvaluadorId" Type="Int32" />
+          <Property Name="EventoId" Type="Int32" />
+          <Property Name="ArchivoId" Type="Int32" />
+          <NavigationProperty Name="Archivos" Relationship="Self.FK_dbo_Paper_dbo_Archivos_Documento_Id" FromRole="Paper" ToRole="Archivos" />
+          <NavigationProperty Name="AreasCientificas" Relationship="Self.FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id" FromRole="Paper" ToRole="AreasCientificas" />
+          <NavigationProperty Name="Conferencia" Relationship="Self.FK_dbo_Charlas_dbo_Paper_paper_Id" FromRole="Paper" ToRole="Conferencia" />
+          <NavigationProperty Name="Eventos" Relationship="Self.FK_dbo_Paper_dbo_Eventos_Evento_Id" FromRole="Paper" ToRole="Eventos" />
+          <NavigationProperty Name="Evaluaciones" Relationship="Self.FK_Evaluaciones_Paper" FromRole="Paper" ToRole="Evaluaciones" />
+          <NavigationProperty Name="Revisiones" Relationship="Self.FK_dbo_Revisiones_dbo_Paper_Paper_Id" FromRole="Paper" ToRole="Revisiones" />
+          <NavigationProperty Name="Perfil" Relationship="Self.PaperAutores" FromRole="Paper" ToRole="Perfil" />
+        </EntityType>
+        <EntityType Name="Revisiones">
+          <Key>
+            <PropertyRef Name="RevisionId" />
+          </Key>
+          <Property Name="RevisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArchivoId" Type="Int32" />
+          <Property Name="PaperId" Type="Int32" />
+          <NavigationProperty Name="Archivos" Relationship="Self.FK_Revisiones_Archivos" FromRole="Revisiones" ToRole="Archivos" />
+          <NavigationProperty Name="Paper" Relationship="Self.FK_dbo_Revisiones_dbo_Paper_Paper_Id" FromRole="Revisiones" ToRole="Paper" />
+        </EntityType>
+        <Association Name="FK_dbo_Paper_dbo_Archivos_Documento_Id">
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="0..1" />
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivos">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="ArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Eventos_Archivos1">
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="0..1" />
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivos">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="Eventos">
+              <PropertyRef Name="LogoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revisiones_Archivos">
+          <End Role="Archivos" Type="Self.Archivos" Multiplicity="0..1" />
+          <End Role="Revisiones" Type="Self.Revisiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archivos">
+              <PropertyRef Name="ArchivoId" />
+            </Principal>
+            <Dependent Role="Revisiones">
+              <PropertyRef Name="ArchivoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Persona_Paises">
+          <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paises">
+              <PropertyRef Name="PaisId" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="NacionalidadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AreasCientificas_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="0..1" />
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AreasCientificas">
+              <PropertyRef Name="OrganizadorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluaciones_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="Evaluaciones" Type="Self.Evaluaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Evaluaciones">
+              <PropertyRef Name="PerfilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionEventos_Perfil">
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="1" />
+          <End Role="InscripcionEventos" Type="Self.InscripcionEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Perfil">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="InscripcionEventos">
+              <PropertyRef Name="PerfilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Perfil_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="Perfil">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="AreasCientificas">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId">
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormularioBecas" Type="Self.FormularioBecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreasCientificas">
+              <PropertyRef Name="AreaCientificaId" />
+            </Principal>
+            <Dependent Role="FormularioBecas">
+              <PropertyRef Name="AreaCientificaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id">
+          <End Role="AreasCientificas" Type="Self.AreasCientificas" Multiplicity="0..1" />
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreasCientificas">
+              <PropertyRef Name="AreaCientificaId" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="AreaCientificaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Charlas_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1" />
+          <End Role="Conferencia" Type="Self.Conferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Conferencia">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Charlas_dbo_Paper_paper_Id">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+          <End Role="Conferencia" Type="Self.Conferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Conferencia">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InscripcionConferencia_Conferencia">
+          <End Role="Conferencia" Type="Self.Conferencia" Multiplicity="1" />
+          <End Role="InscripcionConferencia" Type="Self.InscripcionConferencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conferencia">
+              <PropertyRef Name="ConferenciaId" />
+            </Principal>
+            <Dependent Role="InscripcionConferencia">
+              <PropertyRef Name="ConferenciaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_FormularioBecas_dbo_Eventos_EventoId">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FormularioBecas" Type="Self.FormularioBecas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="FormularioBecas">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="InscripcionEventos" Type="Self.InscripcionEventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="InscripcionEventos">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Paper_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="Paper">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="0..1" />
+          <End Role="SeccionesEvento" Type="Self.SeccionesEvento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Eventos">
+              <PropertyRef Name="EventoId" />
+            </Principal>
+            <Dependent Role="SeccionesEvento">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluaciones_Paper">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="1" />
+          <End Role="Evaluaciones" Type="Self.Evaluaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Evaluaciones">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Revisiones_dbo_Paper_Paper_Id">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="0..1" />
+          <End Role="Revisiones" Type="Self.Revisiones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paper">
+              <PropertyRef Name="PaperId" />
+            </Principal>
+            <Dependent Role="Revisiones">
+              <PropertyRef Name="PaperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Organizadores">
+          <End Role="Eventos" Type="Self.Eventos" Multiplicity="*" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+        </Association>
+        <Association Name="PaperAutores">
+          <End Role="Paper" Type="Self.Paper" Multiplicity="*" />
+          <End Role="Perfil" Type="Self.Perfil" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Congressus2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Archivos" EntityType="Self.Archivos" />
+          <EntitySet Name="Paises" EntityType="Self.Paises" />
+          <EntitySet Name="Perfil" EntityType="Self.Perfil" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="AreasCientificas" EntityType="Self.AreasCientificas" />
+          <EntitySet Name="Conferencia" EntityType="Self.Conferencia" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" />
+          <EntitySet Name="SeccionesEvento" EntityType="Self.SeccionesEvento" />
+          <EntitySet Name="FormularioBecas" EntityType="Self.FormularioBecas" />
+          <EntitySet Name="InscripcionConferencia" EntityType="Self.InscripcionConferencia" />
+          <EntitySet Name="InscripcionEventos" EntityType="Self.InscripcionEventos" />
+          <EntitySet Name="Evaluaciones" EntityType="Self.Evaluaciones" />
+          <EntitySet Name="Paper" EntityType="Self.Paper" />
+          <EntitySet Name="Revisiones" EntityType="Self.Revisiones" />
+          <AssociationSet Name="FK_dbo_Paper_dbo_Archivos_Documento_Id" Association="Self.FK_dbo_Paper_dbo_Archivos_Documento_Id">
+            <End Role="Archivos" EntitySet="Archivos" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Eventos_Archivos1" Association="Self.FK_Eventos_Archivos1">
+            <End Role="Archivos" EntitySet="Archivos" />
+            <End Role="Eventos" EntitySet="Eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revisiones_Archivos" Association="Self.FK_Revisiones_Archivos">
+            <End Role="Archivos" EntitySet="Archivos" />
+            <End Role="Revisiones" EntitySet="Revisiones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Persona_Paises" Association="Self.FK_Persona_Paises">
+            <End Role="Paises" EntitySet="Paises" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AreasCientificas_Perfil" Association="Self.FK_AreasCientificas_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluaciones_Perfil" Association="Self.FK_Evaluaciones_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="Evaluaciones" EntitySet="Evaluaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionEventos_Perfil" Association="Self.FK_InscripcionEventos_Perfil">
+            <End Role="Perfil" EntitySet="Perfil" />
+            <End Role="InscripcionEventos" EntitySet="InscripcionEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Perfil_Persona" Association="Self.FK_Perfil_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId" Association="Self.FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId">
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+            <End Role="FormularioBecas" EntitySet="FormularioBecas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id" Association="Self.FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id">
+            <End Role="AreasCientificas" EntitySet="AreasCientificas" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Charlas_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_Charlas_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Conferencia" EntitySet="Conferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Charlas_dbo_Paper_paper_Id" Association="Self.FK_dbo_Charlas_dbo_Paper_paper_Id">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Conferencia" EntitySet="Conferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InscripcionConferencia_Conferencia" Association="Self.FK_InscripcionConferencia_Conferencia">
+            <End Role="Conferencia" EntitySet="Conferencia" />
+            <End Role="InscripcionConferencia" EntitySet="InscripcionConferencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_FormularioBecas_dbo_Eventos_EventoId" Association="Self.FK_dbo_FormularioBecas_dbo_Eventos_EventoId">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="FormularioBecas" EntitySet="FormularioBecas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="InscripcionEventos" EntitySet="InscripcionEventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Paper_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_Paper_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Paper" EntitySet="Paper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id" Association="Self.FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="SeccionesEvento" EntitySet="SeccionesEvento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluaciones_Paper" Association="Self.FK_Evaluaciones_Paper">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Evaluaciones" EntitySet="Evaluaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Revisiones_dbo_Paper_Paper_Id" Association="Self.FK_dbo_Revisiones_dbo_Paper_Paper_Id">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Revisiones" EntitySet="Revisiones" />
+          </AssociationSet>
+          <AssociationSet Name="Organizadores" Association="Self.Organizadores">
+            <End Role="Eventos" EntitySet="Eventos" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+          <AssociationSet Name="PaperAutores" Association="Self.PaperAutores">
+            <End Role="Paper" EntitySet="Paper" />
+            <End Role="Perfil" EntitySet="Perfil" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Congressus2ModelStoreContainer" CdmEntityContainer="Congressus2Entities">
+          <EntitySetMapping Name="Archivos">
+            <EntityTypeMapping TypeName="Congressus2Model.Archivos">
+              <MappingFragment StoreEntitySet="Archivos">
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Bytes" ColumnName="Bytes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paises">
+            <EntityTypeMapping TypeName="Congressus2Model.Paises">
+              <MappingFragment StoreEntitySet="Paises">
+                <ScalarProperty Name="PaisId" ColumnName="PaisId" />
+                <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Perfil">
+            <EntityTypeMapping TypeName="Congressus2Model.Perfil">
+              <MappingFragment StoreEntitySet="Perfil">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="Congressus2Model.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="DNI" ColumnName="DNI" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="NacionalidadId" ColumnName="NacionalidadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Congressus2Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreasCientificas">
+            <EntityTypeMapping TypeName="Congressus2Model.AreasCientificas">
+              <MappingFragment StoreEntitySet="AreasCientificas">
+                <ScalarProperty Name="AreaCientificaId" ColumnName="AreaCientificaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="OrganizadorId" ColumnName="OrganizadorId" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conferencia">
+            <EntityTypeMapping TypeName="Congressus2Model.Conferencia">
+              <MappingFragment StoreEntitySet="Conferencia">
+                <ScalarProperty Name="ConferenciaId" ColumnName="ConferenciaId" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Cupo" ColumnName="Cupo" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="Congressus2Model.Eventos">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaFinTrabajos" ColumnName="FechaFinTrabajos" />
+                <ScalarProperty Name="FechaFinInscripcion" ColumnName="FechaFinInscripcion" />
+                <ScalarProperty Name="FechaFinInscripcionTemprana" ColumnName="FechaFinInscripcionTemprana" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="Tema" ColumnName="Tema" />
+                <ScalarProperty Name="EmailContacto" ColumnName="EmailContacto" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="HabilitarDescargaCertificados" ColumnName="HabilitarDescargaCertificados" />
+                <ScalarProperty Name="LogoId" ColumnName="LogoId" />
+                <ScalarProperty Name="TextoBienvenida" ColumnName="TextoBienvenida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeccionesEvento">
+            <EntityTypeMapping TypeName="Congressus2Model.SeccionesEvento">
+              <MappingFragment StoreEntitySet="SeccionesEvento">
+                <ScalarProperty Name="SeccionEventoId" ColumnName="SeccionEventoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormularioBecas">
+            <EntityTypeMapping TypeName="Congressus2Model.FormularioBecas">
+              <MappingFragment StoreEntitySet="FormularioBecas">
+                <ScalarProperty Name="FormularioBecaId" ColumnName="FormularioBecaId" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PresentaTrabajo" ColumnName="PresentaTrabajo" />
+                <ScalarProperty Name="AreaCientificaId" ColumnName="AreaCientificaId" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+                <ScalarProperty Name="Universidad" ColumnName="Universidad" />
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="PorcentajeCarrera" ColumnName="PorcentajeCarrera" />
+                <ScalarProperty Name="PromedioParcial" ColumnName="PromedioParcial" />
+                <ScalarProperty Name="TituloGrado" ColumnName="TituloGrado" />
+                <ScalarProperty Name="AñoGrado" ColumnName="AñoGrado" />
+                <ScalarProperty Name="TituloPosgrado" ColumnName="TituloPosgrado" />
+                <ScalarProperty Name="AñoPosgrado" ColumnName="AñoPosgrado" />
+                <ScalarProperty Name="PorcentajePosgrado" ColumnName="PorcentajePosgrado" />
+                <ScalarProperty Name="DirectorPosgrado" ColumnName="DirectorPosgrado" />
+                <ScalarProperty Name="LugarTrabajoPosgrado" ColumnName="LugarTrabajoPosgrado" />
+                <ScalarProperty Name="PosicionActual" ColumnName="PosicionActual" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="AsistenteId" ColumnName="AsistenteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InscripcionConferencia">
+            <EntityTypeMapping TypeName="Congressus2Model.InscripcionConferencia">
+              <MappingFragment StoreEntitySet="InscripcionConferencia">
+                <ScalarProperty Name="InscripcionConferenciaId" ColumnName="InscripcionConferenciaId" />
+                <ScalarProperty Name="ConferenciaId" ColumnName="ConferenciaId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InscripcionEventos">
+            <EntityTypeMapping TypeName="Congressus2Model.InscripcionEventos">
+              <MappingFragment StoreEntitySet="InscripcionEventos">
+                <ScalarProperty Name="InscripcionEventoId" ColumnName="InscripcionEventoId" />
+                <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="MontoPago" ColumnName="MontoPago" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluaciones">
+            <EntityTypeMapping TypeName="Congressus2Model.Evaluaciones">
+              <MappingFragment StoreEntitySet="Evaluaciones">
+                <ScalarProperty Name="EvaluacionId" ColumnName="EvaluacionId" />
+                <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+                <ScalarProperty Name="PerfilId" ColumnName="PerfilId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paper">
+            <EntityTypeMapping TypeName="Congressus2Model.Paper">
+              <MappingFragment StoreEntitySet="Paper">
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="AreaCientificaId" ColumnName="AreaCientificaId" />
+                <ScalarProperty Name="EvaluadorId" ColumnName="EvaluadorId" />
+                <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revisiones">
+            <EntityTypeMapping TypeName="Congressus2Model.Revisiones">
+              <MappingFragment StoreEntitySet="Revisiones">
+                <ScalarProperty Name="RevisionId" ColumnName="RevisionId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="ArchivoId" ColumnName="ArchivoId" />
+                <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Organizadores" TypeName="Congressus2Model.Organizadores" StoreEntitySet="Organizadores">
+            <EndProperty Name="Eventos">
+              <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+            </EndProperty>
+            <EndProperty Name="Perfil">
+              <ScalarProperty Name="UserId" ColumnName="PerfilId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PaperAutores" TypeName="Congressus2Model.PaperAutores" StoreEntitySet="PaperAutores">
+            <EndProperty Name="Paper">
+              <ScalarProperty Name="PaperId" ColumnName="PaperId" />
+            </EndProperty>
+            <EndProperty Name="Perfil">
+              <ScalarProperty Name="UserId" ColumnName="PerfilId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

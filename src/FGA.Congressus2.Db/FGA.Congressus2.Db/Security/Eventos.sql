@@ -1,0 +1,3 @@
+﻿CREATE SCHEMA [Eventos]
+    AUTHORIZATION [dbo];
+

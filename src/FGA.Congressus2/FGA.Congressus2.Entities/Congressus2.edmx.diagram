@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="361002db5f924027849d09df4690881b" Name="Diagram1">
+        <EntityTypeShape EntityType="Congressus2Model.Archivos" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Paises" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Perfil" Width="1.5" PointX="10.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Persona" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.AreasCientificas" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Conferencia" Width="1.5" PointX="13.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Eventos" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.SeccionesEvento" Width="1.5" PointX="5.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.FormularioBecas" Width="1.5" PointX="18" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.InscripcionConferencia" Width="1.5" PointX="15.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.InscripcionEventos" Width="1.5" PointX="12.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Evaluaciones" Width="1.5" PointX="15.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Paper" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Congressus2Model.Revisiones" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_Paper_dbo_Archivos_Documento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_Eventos_Archivos1" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_Revisiones_Archivos" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_Persona_Paises" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_AreasCientificas_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_Evaluaciones_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_InscripcionEventos_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_Perfil_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_AreasCientificas_dbo_Eventos_Evento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_FormularioBecas_dbo_AreasCientificas_AreaCientificaId" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_Paper_dbo_AreasCientificas_AreaCientifica_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_Charlas_dbo_Eventos_Evento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_Charlas_dbo_Paper_paper_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_InscripcionConferencia_Conferencia" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_FormularioBecas_dbo_Eventos_EventoId" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_InscripcionEventos_dbo_Eventos_Evento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_Paper_dbo_Eventos_Evento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_SeccionesEvento_dbo_Eventos_Evento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_Evaluaciones_Paper" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.FK_dbo_Revisiones_dbo_Paper_Paper_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.Organizadores" ManuallyRouted="false" />
+        <AssociationConnector Association="Congressus2Model.PaperAutores" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
